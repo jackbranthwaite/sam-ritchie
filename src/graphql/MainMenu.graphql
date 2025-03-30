@@ -1,0 +1,10 @@
+query MainMenu {
+  mainMenu {
+    menuItems {
+      title
+      pageLink {
+        __typename
+      }
+    }
+  }
+}

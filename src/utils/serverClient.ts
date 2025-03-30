@@ -4,7 +4,7 @@ import {
   InMemoryCache,
   HttpOptions,
 } from '@apollo/client';
-import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/';
+import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc';
 import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
 
 loadDevMessages();
