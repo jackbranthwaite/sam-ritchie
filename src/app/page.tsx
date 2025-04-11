@@ -1,11 +1,13 @@
 import React from 'react';
-import styles from './page.module.scss';
+import s from './page.module.scss';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}></main>
-      <footer className={styles.footer}></footer>
+    <div className={s.page}>
+      <div className={s.homepageHeader}>
+        <h4 className={s.title}>Sam Ritchie</h4>
+        <p className={s.subtitle}>Photographer and Videographer</p>
+      </div>
     </div>
   );
 }
