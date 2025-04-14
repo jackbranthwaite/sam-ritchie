@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import s from './styles.module.scss';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { MenuQuery } from '@/graphql/generated/graphql';
 
-export const Header = () => {
+export const Header = ({ menu }: { menu: MenuQuery['allCategoryPages'] }) => {
   const pathname = usePathname();
   const [colour, setColour] = useState('#fff');
 
@@ -29,15 +30,13 @@ export const Header = () => {
           <Link href={'/overview'} style={{ color: colour }}>
             <div className={s.menuItem}>Overview</div>
           </Link>
-          <Link href={'/arts'} style={{ color: colour }}>
-            <div className={s.menuItem}>Arts</div>
-          </Link>
-          <Link href={'/commercial'} style={{ color: colour }}>
-            <div className={s.menuItem}>Commercial</div>
-          </Link>
-          <Link href={'/personal'} style={{ color: colour }}>
-            <div className={s.menuItem}>Personal</div>
-          </Link>
+          {menu.map((page, i) => {
+            return (
+              <Link href={`/${page.slug}`} style={{ color: colour }} key={i}>
+                <div className={s.menuItem}>{page.title}</div>
+              </Link>
+            );
+          })}
           <Link href={'/contact'} style={{ color: colour }}>
             <div className={s.menuItem}>Contact</div>
           </Link>

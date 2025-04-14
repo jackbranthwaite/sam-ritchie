@@ -1,0 +1,11 @@
+fragment MenuCategoryPage on CategoryPageRecord {
+  id
+  slug
+  title
+}
+
+query Menu {
+  allCategoryPages {
+    ...MenuCategoryPage
+  }
+}

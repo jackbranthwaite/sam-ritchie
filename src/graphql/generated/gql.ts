@@ -14,10 +14,10 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-    "query MainMenu {\n  mainMenu {\n    menuItems {\n      title\n      pageLink {\n        __typename\n      }\n    }\n  }\n}": typeof types.MainMenuDocument,
+    "fragment MenuCategoryPage on CategoryPageRecord {\n  id\n  slug\n  title\n}\n\nquery Menu {\n  allCategoryPages {\n    ...MenuCategoryPage\n  }\n}": typeof types.MenuCategoryPageFragmentDoc,
 };
 const documents: Documents = {
-    "query MainMenu {\n  mainMenu {\n    menuItems {\n      title\n      pageLink {\n        __typename\n      }\n    }\n  }\n}": types.MainMenuDocument,
+    "fragment MenuCategoryPage on CategoryPageRecord {\n  id\n  slug\n  title\n}\n\nquery Menu {\n  allCategoryPages {\n    ...MenuCategoryPage\n  }\n}": types.MenuCategoryPageFragmentDoc,
 };
 
 /**
@@ -37,7 +37,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query MainMenu {\n  mainMenu {\n    menuItems {\n      title\n      pageLink {\n        __typename\n      }\n    }\n  }\n}"): (typeof documents)["query MainMenu {\n  mainMenu {\n    menuItems {\n      title\n      pageLink {\n        __typename\n      }\n    }\n  }\n}"];
+export function graphql(source: "fragment MenuCategoryPage on CategoryPageRecord {\n  id\n  slug\n  title\n}\n\nquery Menu {\n  allCategoryPages {\n    ...MenuCategoryPage\n  }\n}"): (typeof documents)["fragment MenuCategoryPage on CategoryPageRecord {\n  id\n  slug\n  title\n}\n\nquery Menu {\n  allCategoryPages {\n    ...MenuCategoryPage\n  }\n}"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

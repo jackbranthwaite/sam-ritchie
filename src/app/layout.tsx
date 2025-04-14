@@ -3,6 +3,7 @@ import './globals.scss';
 import { getClient } from '@/utils/serverClient';
 import { Header } from '@/components/header';
 import '@/styles/main.scss';
+import { MenuDocument, MenuQuery } from '@/graphql/generated/graphql';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,19 +16,19 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const client = getClient();
-  // const menuData = await client.query<MainMenuQuery>({
-  //   query: MainMenuDocument,
-  //   context: {
-  //     fetchOptions: {
-  //       // Figure out this tag nonsense
-  //       // next: { tags: ['mainmenu'] },
-  //     },
-  //   },
-  // });
+  const menu = await client.query<MenuQuery>({
+    query: MenuDocument,
+    context: {
+      fetchOptions: {
+        // Figure out this tag nonsense
+        // next: { tags: ['mainmenu'] },
+      },
+    },
+  });
   return (
     <html lang='en'>
       <body>
-        <Header />
+        <Header menu={menu.data.allCategoryPages} />
         {children}
       </body>
     </html>
