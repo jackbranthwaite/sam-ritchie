@@ -22,7 +22,8 @@
     "path": "^0.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sass": "^1.86.3"
+    "sass": "^1.86.3",
+    "swiper": "^11.2.6"
   },
   "devDependencies": {
     "@datocms/cli": "^2.0.19",

@@ -4,6 +4,7 @@ import { getClient } from '@/utils/serverClient';
 import { Header } from '@/components/header';
 import '@/styles/main.scss';
 import { MenuDocument, MenuQuery } from '@/graphql/generated/graphql';
+import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -30,6 +31,7 @@ export default async function RootLayout({
       <body>
         <Header menu={menu.data.allCategoryPages} />
         {children}
+        <Footer />
       </body>
     </html>
   );
