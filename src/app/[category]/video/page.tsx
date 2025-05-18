@@ -16,14 +16,13 @@ export default async function VideoPage({
     query: CategoryVideoPageDocument,
     variables: { slug: params.slug },
     context: {
-      fetchOptions: {
-        next: { tags: [params.slug] },
-      },
+      fetchOptions: {},
     },
   });
+  if (!data.data.categoryPage?.videoGallery) return <></>;
   return (
     <div>
-      <VideoGallery data={data.data.categoryPage} />
+      <VideoGallery data={data.data.categoryPage?.videoGallery} />
     </div>
   );
 }

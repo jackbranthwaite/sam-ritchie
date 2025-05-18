@@ -17,6 +17,11 @@ const nextConfig = {
         hostname: 'www.datocms-assets.com',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.vimeo.com',
+        port: '',
+      },
     ],
   },
 };
